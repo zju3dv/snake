@@ -10,6 +10,20 @@ Any questions or discussions are welcomed!
 
 ## Installation
 
+### Set up the python environment
+
+```
+conda create -n snake python=3.7
+conda activate snake
+
+# install torch 1.1 built from cuda 9.0
+pip install torch==1.1.0 -f https://download.pytorch.org/whl/cu90/stable
+
+pip install Cython==0.28.2
+sudo apt-get install libglfw3-dev libglfw3
+pip install -r requirements.txt
+```
+
 ### Set up datasets
 
 #### Cityscapes
@@ -74,7 +88,7 @@ Any questions or discussions are welcomed!
 If you find this code useful for your research, please use the following BibTeX entry.
 
 ```
-@inproceedings{peng2019pvnet,
+@inproceedings{peng2020deep,
   title={Deep Snake for Real-Time Instance Segmentation},
   author={Peng, Sida and Jiang, Wen and Pi, Huaijin and Bao, Hujun and Zhou, Xiaowei},
   booktitle={CVPR},
