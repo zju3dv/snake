@@ -3,7 +3,7 @@
 ![city](assets/snake_city.png)
 
 > [Deep Snake for Real-Time Instance Segmentation](https://arxiv.org/pdf/2001.01629.pdf)  
-> Sida Peng, Wen Jiang, Huaijin Pi, Hujun Bao, Xiaowei Zhou
+> Sida Peng, Wen Jiang, Huaijin Pi, Hujun Bao, Xiaowei Zhou  
 > CVPR 2020
 
 Any questions or discussions are welcomed!
@@ -46,9 +46,11 @@ Any questions or discussions are welcomed!
 	```
     ├── /path/to/kitti
     │   ├── testing
-	│	│   ├── image_2
+    │   │   ├── image_2
+    │   │   ├── instance_val.json
     │   ├── training
-	│	│   ├── image_2
+    │   │   ├── image_2
+    │   │   ├── instance_train.json
     ```
 4. Create a soft link:
     ```
