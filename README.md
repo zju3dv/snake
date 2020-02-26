@@ -20,8 +20,21 @@ conda activate snake
 pip install torch==1.1.0 -f https://download.pytorch.org/whl/cu90/stable
 
 pip install Cython==0.28.2
-sudo apt-get install libglfw3-dev libglfw3
 pip install -r requirements.txt
+```
+
+### Compile cuda extensions under `lib/csrc`
+
+```
+ROOT=/path/to/snake
+cd $ROOT/lib/csrc
+export CUDA_HOME="/usr/local/cuda-9.0"
+cd dcn_v2
+python setup.py build_ext --inplace
+cd ../extreme_utils
+python setup.py build_ext --inplace
+cd ../roi_align_layer
+python setup.py build_ext --inplace
 ```
 
 ### Set up datasets

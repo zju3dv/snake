@@ -1,0 +1,18 @@
+model: 'float_scale_city'
+network: 'ro_34'
+task: 'snake'
+resume: true
+gpus: (0, 1, 2, 3)
+
+train:
+    optim: 'adam'
+    lr: 1e-4
+    milestones: (80, 120, 150)
+    gamma: 0.5
+    batch_size: 32
+    dataset: 'CityscapesTrain'
+    num_workers: 32
+    epoch: 200
+test:
+    dataset: 'CityscapesCocoVal'
+    batch_size: 1

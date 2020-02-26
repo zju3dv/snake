@@ -1,0 +1,7 @@
+pyyaml==3.12
+numpy==1.16.4
+tqdm==4.28.1
+opencv-contrib-python==3.4.2.17
+opencv-python==3.4.2.17
+imgaug==0.2.9
+pycocotools==2.0.0
