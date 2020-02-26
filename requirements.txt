@@ -1,4 +1,4 @@
-pyyaml==3.12
+yacs==0.1.4
 numpy==1.16.4
 tqdm==4.28.1
 opencv-contrib-python==3.4.2.17
