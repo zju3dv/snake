@@ -1,3 +1,5 @@
+We have been releasing the code. Please stay tuned.
+
 # Deep Snake for Real-Time Instance Segmentation
 
 ![city](assets/snake_city.png)
