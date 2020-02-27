@@ -44,5 +44,5 @@ ct_score = 0.05
 
 ro = 4
 
-segm_or_bbox = 'bbox'
+segm_or_bbox = 'segm'
 

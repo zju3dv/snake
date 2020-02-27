@@ -3,7 +3,7 @@
 ![city](assets/snake_city.png)
 
 > [Deep Snake for Real-Time Instance Segmentation](https://arxiv.org/pdf/2001.01629.pdf)  
-> Sida Peng, Wen Jiang, Huaijin Pi, Hujun Bao, Xiaowei Zhou  
+> Sida Peng, Wen Jiang, Huaijin Pi, Xiuli Li, Hujun Bao, Xiaowei Zhou  
 > CVPR 2020
 
 Any questions or discussions are welcomed!
@@ -21,6 +21,12 @@ pip install torch==1.1.0 -f https://download.pytorch.org/whl/cu90/stable
 
 pip install Cython==0.28.2
 pip install -r requirements.txt
+
+# install apex
+cd
+git clone https://github.com/NVIDIA/apex.git
+cd apex
+python setup.py install --cuda_ext --cpp_ext
 ```
 
 ### Compile cuda extensions under `lib/csrc`
@@ -103,7 +109,7 @@ If you find this code useful for your research, please use the following BibTeX 
 ```
 @inproceedings{peng2020deep,
   title={Deep Snake for Real-Time Instance Segmentation},
-  author={Peng, Sida and Jiang, Wen and Pi, Huaijin and Bao, Hujun and Zhou, Xiaowei},
+  author={Peng, Sida and Jiang, Wen and Pi, Huaijin and Li, Xiuli and Bao, Hujun and Zhou, Xiaowei},
   booktitle={CVPR},
   year={2020}
 }
