@@ -1,4 +1,4 @@
-We have been releasing the code. Please stay tuned.
+We have been sorting out the code and the pretrained models. Please stay tuned.
 
 # Deep Snake for Real-Time Instance Segmentation
 
