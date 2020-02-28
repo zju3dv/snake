@@ -104,6 +104,19 @@ python setup.py build_ext --inplace
     ln -s /path/to/sbd sbd
     ```
 
+## Testing
+
+### Testing on Cityscapes
+
+1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:u:/g/personal/pengsida_zju_edu_cn/EZQH9jtCtsVLm8g_p6LNvOAByg1T5vc01lx45_aE3bXUkA?e=e6DsOs) and put it to `$ROOT/data/model/rcnn_snake/long_rcnn/197.pth`.
+2. Test:
+    ```
+    # use coco evaluator
+    python run.py --type evaluate --cfg_file configs/city_rcnn_snake.yaml
+    # use the cityscapes offical evaluator
+    python run.py --type evaluate --cfg_file configs/city_rcnn_snake.yaml test.dataset CityscapesVal
+    ```
+
 ## Citation
 
 If you find this code useful for your research, please use the following BibTeX entry.

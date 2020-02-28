@@ -16,3 +16,6 @@ train:
 test:
     dataset: 'CocoMini'
     batch_size: 1
+
+heads: {'ct_hm': 80, 'wh': 2}
+segm_or_bbox: 'segm'

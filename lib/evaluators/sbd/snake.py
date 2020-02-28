@@ -149,4 +149,4 @@ class DetectionEvaluator:
         return {'ap': coco_eval.stats[0]}
 
 
-Evaluator = Evaluator if snake_config.segm_or_bbox == 'segm' else DetectionEvaluator
+Evaluator = Evaluator if cfg.segm_or_bbox == 'segm' else DetectionEvaluator

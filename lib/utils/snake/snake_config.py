@@ -1,4 +1,6 @@
 import numpy as np
+from lib.config import cfg
+
 
 mean = np.array([0.40789654, 0.44719302, 0.47026115],
                     dtype=np.float32).reshape(1, 1, 3)
@@ -40,7 +42,7 @@ train_pred_box_only = True
 train_pred_ex = False
 train_nearest_gt = True
 
-ct_score = 0.05
+ct_score = cfg.ct_score
 
 ro = 4
 

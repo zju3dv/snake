@@ -12,7 +12,7 @@ cfg.model_dir = 'data/model'
 cfg.network = 'dla_34'
 
 # network heads
-cfg.heads = ''
+cfg.heads = CN()
 
 # task
 cfg.task = ''
@@ -63,54 +63,18 @@ cfg.save_ep = 5
 cfg.eval_ep = 5
 
 
+# -----------------------------------------------------------------------------
+# snake
+# -----------------------------------------------------------------------------
+cfg.ct_score = 0.05
+
+
 def parse_cfg(cfg, args):
     if len(cfg.task) == 0:
         raise ValueError('task must be specified')
 
     # assign the gpus
     os.environ['CUDA_VISIBLE_DEVICES'] = ', '.join([str(gpu) for gpu in cfg.gpus])
-
-    if cfg.task == 'ct':
-        num_classes = 8
-        if 'Kins' in cfg.train.dataset:
-            num_classes = 7
-        cfg.heads = CN({'ct_hm': num_classes, 'wh': 2})
-
-    if cfg.task == 'ext':
-        num_classes = 8
-        if 'Kins' in cfg.train.dataset:
-            num_classes = 7
-        cfg.heads = CN({'ct_hm': num_classes, 'ext': 8})
-
-    if 'snake' in cfg.task:
-        num_classes = 8
-        if 'Sbd' in cfg.train.dataset:
-            num_classes = 20
-        if 'Linemod' in cfg.train.dataset:
-            num_classes = 1
-        if 'Kins' in cfg.train.dataset:
-            num_classes = 7
-        if 'Coco' in cfg.train.dataset:
-            num_classes = 80
-        cfg.heads = CN({'ct_hm': num_classes, 'wh': 2})
-        # cfg.heads = CN({'ct_hm': num_classes, 'wh': 2, 'reg': 2})
-
-        if cfg.task == 'ext_snake':
-            cfg.heads = CN({'ct_hm': num_classes, 'ext': 8})
-
-        if cfg.task == 'snake_only':
-            cfg.heads = CN({})
-
-    if cfg.task == 'dsnake':
-        num_classes = 8
-        cfg.heads = CN({'act_hm': num_classes, 'awh': 2, 'ct_hm': num_classes, 'wh': 2})
-
-    if cfg.task == 'rcnn_snake':
-        num_classes = 8
-        cfg.heads = CN({'act_hm': num_classes, 'awh': 2})
-
-    if cfg.task == 'retina':
-        cfg.num_classes = 7
 
     cfg.det_dir = os.path.join(cfg.model_dir, cfg.task, args.det)
 

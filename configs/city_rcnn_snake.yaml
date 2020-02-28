@@ -16,3 +16,7 @@ train:
 test:
     dataset: 'CityscapesCocoVal'
     batch_size: 1
+
+heads: {'act_hm': 8, 'awh': 2}
+segm_or_bbox: 'segm'
+ct_score: 0.03
