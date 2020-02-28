@@ -4,7 +4,7 @@ We have been releasing the code. Please stay tuned.
 
 ![city](assets/snake_city.png)
 
-> [Deep Snake for Real-Time Instance Segmentation](https://arxiv.org/pdf/2001.01629.pdf)  
+> [Deep Snake for Real-Time Instance Segmentation](https://arxiv.org/pdf/2001.01629v2.pdf)  
 > Sida Peng, Wen Jiang, Huaijin Pi, Xiuli Li, Hujun Bao, Xiaowei Zhou  
 > CVPR 2020
 
