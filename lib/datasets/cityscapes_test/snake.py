@@ -21,7 +21,6 @@ class Dataset(data.Dataset):
 
     def __getitem__(self, index):
         img = self.imgs[index]
-        img = 'data/cityscapes/leftImg8bit/test/munich/munich_000176_000019_leftImg8bit.png'
         img_id = os.path.basename(img).replace('_leftImg8bit.png', '')
         img = cv2.imread(img)
 
