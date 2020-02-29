@@ -108,13 +108,29 @@ python setup.py build_ext --inplace
 
 ### Testing on Cityscapes
 
-1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:u:/g/personal/pengsida_zju_edu_cn/EZQH9jtCtsVLm8g_p6LNvOAByg1T5vc01lx45_aE3bXUkA?e=e6DsOs) and put it to `$ROOT/data/model/rcnn_snake/long_rcnn/197.pth`.
+1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:u:/g/personal/pengsida_zju_edu_cn/EX6rAwkK7jBEp7LxKbYIjAkB0QCFjBL4Ov6_aaK1zZFfrA?e=fRWG2x) and put it to `$ROOT/data/model/rcnn_snake/long_rcnn/197.pth`.
 2. Test:
     ```
     # use coco evaluator
     python run.py --type evaluate --cfg_file configs/city_rcnn_snake.yaml
     # use the cityscapes offical evaluator
     python run.py --type evaluate --cfg_file configs/city_rcnn_snake.yaml test.dataset CityscapesVal
+    ```
+
+### Testing on Kitti
+
+1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:u:/g/personal/pengsida_zju_edu_cn/ERrNrpFPg71HmaegOIqypFkBzqeYn84RF5Sq9dUZM7nsbg?e=bQZ8bp) and put it to `$ROOT/data/model/snake/kins/149.pth`.
+2. Test:
+    ```
+    python run.py --type evaluate --cfg_file configs/kins_snake.yaml test.dataset KinsVal
+    ```
+
+### Testing on Sbd
+
+1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:u:/g/personal/pengsida_zju_edu_cn/EVIoAulD8ORAli3qjdPBMOoBbRTHaxhPHn_a76EznL_W-g?e=EzQQS1) and put it to `$ROOT/data/model/snake/Sbd/149.pth`.
+2. Test:
+    ```
+    python run.py --type evaluate --cfg_file configs/sbd_snake.yaml test.dataset SbdVal
     ```
 
 ## Citation

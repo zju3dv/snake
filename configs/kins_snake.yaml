@@ -16,7 +16,6 @@ train:
 test:
     dataset: 'KinsMini'
     batch_size: 1
-    epoch: 149
 
 heads: {'ct_hm': 7, 'wh': 2}
 segm_or_bbox: 'segm'

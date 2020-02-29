@@ -16,7 +16,6 @@ train:
 test:
     dataset: 'SbdMini'
     batch_size: 1
-    epoch: 159
 
 heads: {'ct_hm': 20, 'wh': 2}
 segm_or_bbox: 'segm'
