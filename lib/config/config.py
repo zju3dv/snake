@@ -39,6 +39,7 @@ cfg.train.lr = 1e-4
 cfg.train.weight_decay = 5e-4
 
 cfg.train.warmup = False
+cfg.train.scheduler = ''
 cfg.train.milestones = [80, 120, 200, 240]
 cfg.train.gamma = 0.5
 

@@ -12,7 +12,7 @@ train:
     batch_size: 80
     dataset: 'SbdTrain'
     num_workers: 32
-    epoch: 200
+    epoch: 150
 test:
     dataset: 'SbdMini'
     batch_size: 1

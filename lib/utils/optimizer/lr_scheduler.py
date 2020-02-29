@@ -48,3 +48,29 @@ class WarmupMultiStepLR(torch.optim.lr_scheduler._LRScheduler):
             for base_lr in self.base_lrs
         ]
 
+
+class ManualStepLR(torch.optim.lr_scheduler._LRScheduler):
+    def __init__(
+        self,
+        optimizer,
+        milestones,
+        gammas,
+        last_epoch=-1
+    ):
+        if not list(milestones) == sorted(milestones):
+            raise ValueError(
+                "Milestones should be a list of" " increasing integers. Got {}",
+                milestones,
+            )
+
+        self.milestones = milestones
+        self.gammas = gammas
+        super(ManualStepLR, self).__init__(optimizer, last_epoch)
+
+    def get_lr(self):
+        if self.last_epoch not in self.milestones:
+            return [group['lr'] for group in self.optimizer.param_groups]
+        index = self.milestones.index(self.last_epoch)
+        gamma = self.gammas[index]
+        return [group['lr'] * gamma
+                for group in self.optimizer.param_groups]

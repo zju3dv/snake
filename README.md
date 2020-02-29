@@ -76,6 +76,20 @@ If setup correctly, the output will look like
     python run.py --type visualize --cfg_file configs/sbd_snake.yaml test.dataset SbdVal ct_score 0.3
     ```
 
+## Training
+
+### Training on Kins
+
+```
+python train_net.py --cfg_file configs/kins_snake.yaml
+```
+
+### Training on Sbd
+
+```
+python train_net.py --cfg_file configs/sbd_snake.yaml
+```
+
 ## Citation
 
 If you find this code useful for your research, please use the following BibTeX entry.

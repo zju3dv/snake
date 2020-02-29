@@ -7,12 +7,14 @@ gpus: (0, 1, 2, 3, 4, 5, 6, 7)
 train:
     optim: 'adam'
     lr: 1e-4
-    milestones: (80, 120, 150, 170)
+    milestones: (80, 120)
     gamma: 0.25
     batch_size: 72
     dataset: 'KinsTrain'
     num_workers: 32
-    epoch: 200
+    epoch: 150
+    scheduler: 'manual'
+    gammas: [0.5, 0.1]
 test:
     dataset: 'KinsMini'
     batch_size: 1
