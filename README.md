@@ -103,6 +103,21 @@ python train_net.py --cfg_file configs/kins_snake.yaml model kins_snake
 python train_net.py --cfg_file configs/sbd_snake.yaml model sbd_snake
 ```
 
+### Tensorboard
+
+We provide tensorboard for seeing the training status:
+
+```
+# for the rcnn_snake task
+tensorboard --logdir data/record/rcnn_snake
+# for the snake task
+tensorboard --logdir data/record/snake
+```
+
+If setup correctly, the output will look like
+
+![tensorboard](assets/snake_tensorboard.png)
+
 ## Citation
 
 If you find this code useful for your research, please use the following BibTeX entry.
