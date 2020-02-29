@@ -5,9 +5,6 @@ from .cp_head import ComponentDetection
 import torch
 from lib.utils.snake import snake_decode
 from lib.utils import data_utils
-from .evolve import Evolution
-from lib.config import cfg
-import os
 
 
 class Network(nn.Module):
@@ -21,10 +18,6 @@ class Network(nn.Module):
                           last_level=5,
                           head_conv=head_conv)
         self.cp = ComponentDetection()
-        self.gcn = Evolution()
-
-        det_dir = os.path.join(os.path.dirname(cfg.model_dir), cfg.det_model)
-        net_utils.load_network(self, det_dir, strict=False)
 
     def decode_detection(self, output, h, w):
         ct_hm = output['act_hm']
@@ -39,7 +32,6 @@ class Network(nn.Module):
         with torch.no_grad():
             self.decode_detection(output, cnn_feature.size(2), cnn_feature.size(3))
         output = self.cp(output, cnn_feature, batch)
-        output = self.gcn(output, cnn_feature, batch)
         return output
 
 

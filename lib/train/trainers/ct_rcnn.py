@@ -13,8 +13,6 @@ class NetworkWrapper(nn.Module):
         self.awh_crit = net_utils.IndL1Loss1d('smooth_l1')
         self.cp_crit = net_utils.FocalLoss()
         self.cp_wh_crit = net_utils.IndL1Loss1d('smooth_l1')
-        self.ex_crit = torch.nn.functional.smooth_l1_loss
-        self.py_crit = torch.nn.functional.smooth_l1_loss
 
     def forward(self, batch):
         output = self.net(batch['inp'], batch)
@@ -40,17 +38,6 @@ class NetworkWrapper(nn.Module):
         cp_wh_loss = self.cp_wh_crit(output['cp_wh'], cp_wh, cp_ind, cp_01)
         scalar_stats.update({'cp_wh_loss': cp_wh_loss})
         loss += 0.1 * cp_wh_loss
-
-        ex_loss = self.ex_crit(output['ex_pred'], output['i_gt_4py'])
-        scalar_stats.update({'ex_loss': ex_loss})
-        loss += ex_loss
-
-        py_loss = 0
-        output['py_pred'] = [output['py_pred'][-1]]
-        for i in range(len(output['py_pred'])):
-            py_loss += self.py_crit(output['py_pred'][i], output['i_gt_py']) / len(output['py_pred'])
-        scalar_stats.update({'py_loss': py_loss})
-        loss += py_loss
 
         scalar_stats.update({'loss': loss})
         image_stats = {}

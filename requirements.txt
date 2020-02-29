@@ -6,3 +6,4 @@ opencv-python==3.4.2.17
 imgaug==0.2.9
 pycocotools==2.0.0
 Pillow
+tensorboardX==1.2

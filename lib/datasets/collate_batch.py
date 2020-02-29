@@ -241,18 +241,9 @@ def ext_snake_collator(batch):
 
 _collators = {
     'snake': snake_collator,
-    'snake2': snake_collator,
-    'snake3': snake_collator,
-    'snake4': snake_collator,
-    'retina': snake_collator,
-    'asnake': snake_collator,
     'ct': snake_collator,
-    'naive_snake': snake_collator,
-    'dsnake': dsnake_collator,
     'rcnn_snake': rcnn_snake_collator,
-    'ext': ext_snake_collator,
-    'ext_snake': ext_snake_collator,
-    'snake_only': snake_collator
+    'ct_rcnn': rcnn_snake_collator
 }
 
 

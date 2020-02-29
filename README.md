@@ -1,5 +1,3 @@
-We have been sorting out the code and the pretrained models. Please stay tuned.
-
 # Deep Snake for Real-Time Instance Segmentation
 
 ![city](assets/snake_city.png)
@@ -78,16 +76,31 @@ If setup correctly, the output will look like
 
 ## Training
 
+The training parameters can be found in [project_structure.md](project_structure.md).
+
+### Training on Cityscapes
+
+Two-stage training:
+
+1. Train the detector:
+    ```
+    python train_net.py --cfg_file configs/city_ct_rcnn.yaml model rcnn_det
+    ```
+2. Train the detector and snake together:
+    ```
+    python train_net.py --cfg_file configs/city_rcnn_snake.yaml model rcnn_snake det_model rcnn_det
+    ```
+
 ### Training on Kins
 
 ```
-python train_net.py --cfg_file configs/kins_snake.yaml
+python train_net.py --cfg_file configs/kins_snake.yaml model kins_snake
 ```
 
 ### Training on Sbd
 
 ```
-python train_net.py --cfg_file configs/sbd_snake.yaml
+python train_net.py --cfg_file configs/sbd_snake.yaml model sbd_snake
 ```
 
 ## Citation

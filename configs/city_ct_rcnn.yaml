@@ -1,24 +1,22 @@
-model: 'long_rcnn'
+model: 'long_rcnn_det'
 network: 'rcnn_34'
-task: 'rcnn_snake'
+task: 'ct_rcnn'
 resume: true
 gpus: (0, 1, 2, 3)
-
-det_model: 'long_rcnn_det'
 
 train:
     optim: 'adam'
     lr: 1e-4
-    milestones: (80, 120, 150)
+    milestones: (80, 120)
     gamma: 0.5
     batch_size: 32
     dataset: 'CityscapesTrain'
     num_workers: 32
-    epoch: 200
+    epoch: 140
 test:
     dataset: 'CityscapesCocoVal'
     batch_size: 1
 
 heads: {'act_hm': 8, 'awh': 2}
-segm_or_bbox: 'segm'
+segm_or_bbox: 'bbox'
 ct_score: 0.03
