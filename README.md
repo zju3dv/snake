@@ -63,7 +63,7 @@ If setup correctly, the output will look like
 ### Visualization on Kitti
 
 1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:u:/g/personal/pengsida_zju_edu_cn/ERrNrpFPg71HmaegOIqypFkBzqeYn84RF5Sq9dUZM7nsbg?e=bQZ8bp) and put it to `$ROOT/data/model/snake/kins/149.pth`.
-2. Test:
+2. Visualize:
     ```
     python run.py --type visualize --cfg_file configs/kins_snake.yaml test.dataset KinsVal ct_score 0.3
     ```
@@ -71,7 +71,7 @@ If setup correctly, the output will look like
 ### Visualization on Sbd
 
 1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:u:/g/personal/pengsida_zju_edu_cn/EVIoAulD8ORAli3qjdPBMOoBbRTHaxhPHn_a76EznL_W-g?e=EzQQS1) and put it to `$ROOT/data/model/snake/Sbd/149.pth`.
-2. Test:
+2. Visualize:
     ```
     python run.py --type visualize --cfg_file configs/sbd_snake.yaml test.dataset SbdVal ct_score 0.3
     ```
