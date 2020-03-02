@@ -24,6 +24,10 @@ Please see [INSTALL.md](INSTALL.md).
     # use the cityscapes offical evaluator
     python run.py --type evaluate --cfg_file configs/city_rcnn_snake.yaml test.dataset CityscapesVal
     ```
+3. Speed:
+    ```
+    python run.py --type network --cfg_file configs/city_rcnn_snake.yaml
+    ```
 
 ### Testing on Kitti
 
@@ -32,6 +36,10 @@ Please see [INSTALL.md](INSTALL.md).
     ```
     python run.py --type evaluate --cfg_file configs/kins_snake.yaml test.dataset KinsVal
     ```
+3. Speed:
+    ```
+    python run.py --type network --cfg_file configs/kins_snake.yaml test.dataset KinsVal
+    ```
 
 ### Testing on Sbd
 
@@ -39,6 +47,10 @@ Please see [INSTALL.md](INSTALL.md).
 2. Test:
     ```
     python run.py --type evaluate --cfg_file configs/sbd_snake.yaml test.dataset SbdVal
+    ```
+3. Speed:
+    ```
+    python run.py --type network --cfg_file configs/sbd_snake.yaml test.dataset SbdVal
     ```
 
 ## Visualization
