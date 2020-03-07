@@ -4,6 +4,7 @@ from torch import nn
 import numpy as np
 import torch.nn.functional
 from collections import OrderedDict
+from termcolor import colored
 
 
 def sigmoid(x):
@@ -265,12 +266,15 @@ class GeoCrossEntropyLoss(nn.Module):
 def load_model(net, optim, scheduler, recorder, model_dir, resume=True, epoch=-1):
     if not resume:
         os.system('rm -rf {}'.format(model_dir))
+        return 0
 
     if not os.path.exists(model_dir):
+        print(colored('WARNING: NO MODEL LOADED !!!', 'red'))
         return 0
 
     pths = [int(pth.split('.')[0]) for pth in os.listdir(model_dir)]
     if len(pths) == 0:
+        print(colored('WARNING: NO MODEL LOADED !!!', 'red'))
         return 0
     if epoch == -1:
         pth = max(pths)
@@ -307,10 +311,12 @@ def load_network(net, model_dir, resume=True, epoch=-1, strict=True):
         return 0
 
     if not os.path.exists(model_dir):
+        print(colored('WARNING: NO MODEL LOADED !!!', 'red'))
         return 0
 
     pths = [int(pth.split('.')[0]) for pth in os.listdir(model_dir) if 'pth' in pth]
     if len(pths) == 0:
+        print(colored('WARNING: NO MODEL LOADED !!!', 'red'))
         return 0
     if epoch == -1:
         pth = max(pths)

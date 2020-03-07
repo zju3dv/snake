@@ -18,8 +18,6 @@ class Network(nn.Module):
                           head_conv=head_conv)
         self.gcn = Evolution()
 
-        net_utils.load_network(self.dla, det_dir)
-
     def decode_detection(self, output, h, w):
         ct_hm = output['ct_hm']
         wh = output['wh']
