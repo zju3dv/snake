@@ -85,5 +85,10 @@ def run_visualize():
         visualizer.visualize(output, batch)
 
 
+def run_sbd():
+    from tools import convert_sbd
+    convert_sbd.convert_sbd()
+
+
 if __name__ == '__main__':
     globals()['run_'+args.type]()
