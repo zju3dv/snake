@@ -86,6 +86,22 @@ If setup correctly, the output will look like
     python run.py --type visualize --cfg_file configs/sbd_snake.yaml test.dataset SbdVal ct_score 0.3
     ```
 
+### Demo
+
+We support demo for image and image folder using `python run.py --type demo --cfg_file /path/to/yaml_file demo_path /path/to/image ct_score 0.3`.
+
+For example:
+
+```
+python run.py --type demo --cfg_file configs/sbd_snake.yaml demo_path demo_images ct_score 0.3
+# or
+python run.py --type demo --cfg_file configs/sbd_snake.yaml demo_path demo_imgs/2009_000871.jpg ct_score 0.3
+```
+
+If setup correctly, the output will look like
+
+![demo](assets/demo.png)
+
 ## Training
 
 The training parameters can be found in [project_structure.md](project_structure.md).

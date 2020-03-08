@@ -68,6 +68,7 @@ cfg.eval_ep = 5
 # snake
 # -----------------------------------------------------------------------------
 cfg.ct_score = 0.05
+cfg.demo_path = ''
 
 
 def parse_cfg(cfg, args):

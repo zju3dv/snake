@@ -75,7 +75,7 @@ class Visualizer:
             color = next(colors).tolist()
             poly = ex[i]
             poly = np.append(poly, [poly[0]], axis=0)
-            ax.plot(poly[:, 0], poly[:, 1], color=color, linewidth=12)
+            ax.plot(poly[:, 0], poly[:, 1], color=color, linewidth=5)
 
             x_min, y_min, x_max, y_max = box[i]
             ax.plot([x_min, x_min, x_max, x_max, x_min], [y_min, y_max, y_max, y_min, y_min], color='w', linewidth=0.5)

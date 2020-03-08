@@ -90,5 +90,10 @@ def run_sbd():
     convert_sbd.convert_sbd()
 
 
+def run_demo():
+    from tools import demo
+    demo.demo()
+
+
 if __name__ == '__main__':
     globals()['run_'+args.type]()
