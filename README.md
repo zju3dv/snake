@@ -21,7 +21,7 @@ Please see [INSTALL.md](INSTALL.md).
     ```
     # use coco evaluator
     python run.py --type evaluate --cfg_file configs/city_rcnn_snake.yaml
-    # use the cityscapes offical evaluator
+    # use the cityscapes official evaluator
     python run.py --type evaluate --cfg_file configs/city_rcnn_snake.yaml test.dataset CityscapesVal
     ```
 3. Speed:
