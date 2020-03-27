@@ -232,6 +232,18 @@ class Dataset(data.Dataset):
                 self.prepare_init(decode_boxes[j], extreme_point, i_it_4pys, c_it_4pys, i_gt_4pys, c_gt_4pys, output_h, output_w)
                 self.prepare_evolution(poly, extreme_point, i_it_pys, c_it_pys, i_gt_pys, c_gt_pys)
 
+        # the meaning of the returned data
+        # inp: image
+        # act_hm: 'ct_hm' means the heatmap of the object center; 'a' means 'amodal', which includes the complete object
+        # awh: 'wh' means the width and height of the object bounding box
+        # act_ind: the index in an image, row * width + col
+        # cp_hm: component heatmap
+        # cp_ind: the index in an RoI
+        # i_it_4py: initial 4-vertex polygon for extreme point prediction, 'i' means 'image', 'it' means 'initial'
+        # c_it_4py: normalized initial 4-vertex polygon. 'c' means 'canonical', which indicates that the polygon coordinates are normalized.
+        # i_gt_4py: ground-truth 4-vertex polygon.
+        # i_it_py: initial n-vertex polygon for contour deformation.
+
         ret = {'inp': inp}
         adet = {'act_hm': act_hm, 'awh': awh, 'act_ind': act_ind}
         cp = {'cp_hm': cp_hm, 'cp_wh': cp_wh, 'cp_ind': cp_ind}
