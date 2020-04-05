@@ -30,3 +30,7 @@ WORKDIR /usr/src/deepsnake/
 
 #copy all the files to the container
 COPY . .
+
+
+RUN ROOT=/usr/src/deepsnake 
+#RUN cd data && ln -s /data kitti
