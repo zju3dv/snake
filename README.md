@@ -95,7 +95,7 @@ For example:
 ```
 python run.py --type demo --cfg_file configs/sbd_snake.yaml demo_path demo_images ct_score 0.3
 # or
-python run.py --type demo --cfg_file configs/sbd_snake.yaml demo_path demo_imgs/2009_000871.jpg ct_score 0.3
+python run.py --type demo --cfg_file configs/sbd_snake.yaml demo_path demo_images/2009_000871.jpg ct_score 0.3
 ```
 
 If setup correctly, the output will look like
