@@ -1,11 +1,11 @@
-FROM ubuntu:latest
+FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
 
 #
 # Essentials: developer tools, build tools
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git curl vim unzip openssh-client wget \
-    build-essential cmake checkinstall gcc
+    build-essential cmake checkinstall gcc tmux
 #
 # Python 3
 #
@@ -21,6 +21,9 @@ RUN apt-get install -y --no-install-recommends python python3-pip python-dev pyt
 #
 RUN pip3 --no-cache-dir install \
     numpy scipy==1.1.0 sklearn scikit-image pandas matplotlib Cython requests
+
+# install torch 1.1 built from cuda 9.0
+RUN pip3 install torch==1.1.0 -f https://download.pytorch.org/whl/cu90/stable
 
 COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install -U -r /tmp/requirements.txt
