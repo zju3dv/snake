@@ -34,6 +34,11 @@ WORKDIR /usr/src/deepsnake/
 #copy all the files to the container
 COPY . .
 
-
-RUN ROOT=/usr/src/deepsnake 
+RUN apt-get install -y --no-install-recommends libgtk2.0-dev
+RUN cd /usr/src && git clone https://github.com/DesperateMaker/apex.git && cd apex 
+#&& \
+#	python setup.py install --cuda_ext --cpp_ext
+RUN ROOT=/usr/src/deepsnake && cd $ROOT/lib/csrc %% export CUDA_HOME="/usr/local/cuda-10.0"
+# && \
+#	cd dcn_v2 && python setup.py build_ext --inplace
 #RUN cd data && ln -s /data kitti
