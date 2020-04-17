@@ -5,7 +5,9 @@ FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git curl vim unzip openssh-client wget \
-    build-essential cmake checkinstall gcc tmux
+    build-essential cmake checkinstall gcc tmux \
+#Other requirements
+    libgtk2.0-dev
 #
 # Python 3
 #
@@ -22,23 +24,24 @@ RUN apt-get install -y --no-install-recommends python python3-pip python-dev pyt
 RUN pip3 --no-cache-dir install \
     numpy scipy==1.1.0 sklearn scikit-image pandas matplotlib Cython requests
 
-# install torch 1.1 built from cuda 9.0
-RUN pip3 install torch==1.1.0 -f https://download.pytorch.org/whl/cu90/stable
+# install torch 1.1 built from cuda 10.0
+RUN pip3 install torch==1.0.0 -f https://download.pytorch.org/whl/cu100/stable
 
 COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install -U -r /tmp/requirements.txt
 
-#set a directory for the app
+#set a ROOT directory for the app
 WORKDIR /usr/src/deepsnake/
 
 #copy all the files to the container
 COPY . .
 
-RUN apt-get install -y --no-install-recommends libgtk2.0-dev
-RUN cd /usr/src && git clone https://github.com/DesperateMaker/apex.git && cd apex 
-#&& \
-#	python setup.py install --cuda_ext --cpp_ext
-RUN ROOT=/usr/src/deepsnake && cd $ROOT/lib/csrc %% export CUDA_HOME="/usr/local/cuda-10.0"
+ENV ROOT /usr/src/deepsnake
+ENV CUDA_HOME /usr/local/cuda-10.0
+
+RUN git clone https://github.com/DesperateMaker/apex.git /usr/src/apex 
+RUN cd /usr/src/apex/ && python3 setup.py install --cuda_ext --cpp_ext && cd ${ROOT}/lib/csrc/dcn_v2 && python3 setup.py build_ext --inplace
+ 
 # && \
 #	cd dcn_v2 && python setup.py build_ext --inplace
 #RUN cd data && ln -s /data kitti
