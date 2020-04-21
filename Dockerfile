@@ -25,7 +25,8 @@ RUN pip3 --no-cache-dir install \
     numpy scipy==1.1.0 sklearn scikit-image pandas matplotlib Cython requests
 
 # install torch 1.1 built from cuda 10.0
-RUN pip3 install torch==1.0.0 -f https://download.pytorch.org/whl/cu100/stable
+#RUN pip3 install torch==1.0.0 -f https://download.pytorch.org/whl/cu100/stable
+RUN pip3 install -U https://download.pytorch.org/whl/cu100/torch-1.0.0-cp36-cp36m-linux_x86_64.whl
 
 COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install -U -r /tmp/requirements.txt
@@ -39,8 +40,11 @@ COPY . .
 ENV ROOT /usr/src/deepsnake
 ENV CUDA_HOME /usr/local/cuda-10.0
 
+#uncomment for use on Turing arch such as Geforce 2070, 2080 etc.
+ENV CUDA_LAUNCH_BLOCKING=1 
+
 RUN git clone https://github.com/DesperateMaker/apex.git /usr/src/apex 
-RUN cd /usr/src/apex/ && python3 setup.py install --cuda_ext --cpp_ext && cd ${ROOT}/lib/csrc/dcn_v2 && python3 setup.py build_ext --inplace
+#RUN cd /usr/src/apex/ && python3 setup.py install --cuda_ext --cpp_ext && cd ${ROOT}/lib/csrc/dcn_v2 && python3 setup.py build_ext --inplace
  
 # && \
 #	cd dcn_v2 && python setup.py build_ext --inplace
