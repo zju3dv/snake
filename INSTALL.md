@@ -15,6 +15,7 @@ pip install -r requirements.txt
 cd
 git clone https://github.com/NVIDIA/apex.git
 cd apex
+git checkout 39e153a3159724432257a8fc118807b359f4d1c8
 export CUDA_HOME="/usr/local/cuda-9.0"
 python setup.py install --cuda_ext --cpp_ext
 ```
