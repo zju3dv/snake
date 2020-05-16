@@ -63,6 +63,7 @@ cfg.skip_eval = False
 cfg.save_ep = 5
 cfg.eval_ep = 5
 
+cfg.use_gt_det = False
 
 # -----------------------------------------------------------------------------
 # snake

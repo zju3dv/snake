@@ -4,6 +4,7 @@ from .evolve import Evolution
 from lib.utils import net_utils, data_utils
 from lib.utils.snake import snake_decode
 import torch
+from lib.config import cfg
 
 
 class Network(nn.Module):
@@ -26,10 +27,35 @@ class Network(nn.Module):
         output.update({'ct': ct, 'detection': detection})
         return ct, detection
 
+    def use_gt_detection(self, output, batch):
+        _, _, height, width = output['ct_hm'].size()
+        ct_01 = batch['ct_01'].byte()
+
+        ct_ind = batch['ct_ind'][ct_01]
+        xs, ys = ct_ind % width, ct_ind // width
+        xs, ys = xs[:, None].float(), ys[:, None].float()
+        ct = torch.cat([xs, ys], dim=1)
+
+        wh = batch['wh'][ct_01]
+        bboxes = torch.cat([xs - wh[..., 0:1] / 2,
+                            ys - wh[..., 1:2] / 2,
+                            xs + wh[..., 0:1] / 2,
+                            ys + wh[..., 1:2] / 2], dim=1)
+        score = torch.ones([len(bboxes)]).to(bboxes)[:, None]
+        ct_cls = batch['ct_cls'][ct_01].float()[:, None]
+        detection = torch.cat([bboxes, score, ct_cls], dim=1)
+
+        output['ct'] = ct[None]
+        output['detection'] = detection[None]
+
+        return output
+
     def forward(self, x, batch=None):
         output, cnn_feature = self.dla(x)
         with torch.no_grad():
             ct, detection = self.decode_detection(output, cnn_feature.size(2), cnn_feature.size(3))
+        if cfg.use_gt_det:
+            self.use_gt_detection(output, batch)
         output = self.gcn(output, cnn_feature, batch)
         return output
 
