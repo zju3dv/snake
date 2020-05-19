@@ -8,3 +8,4 @@ __pycache__/
 *.json
 *.pth
 *.npy
+.venv/
