@@ -44,7 +44,7 @@ COPY . .
 #RUN pip3 install torch==1.0.0 -f https://download.pytorch.org/whl/cu100/stable
 RUN pip3 install -U https://download.pytorch.org/whl/cu100/torch-1.0.0-cp36-cp36m-linux_x86_64.whl && \
 # install apex(lib from nvidia) in the same container
-    git clone https://github.com/DesperateMaker/apex.git /usr/src/apex && cd /usr/src/apex/ # && \
+    git clone https://github.com/DesperateMaker/apex.git /usr/src/apex && cd /usr/src/apex/
 #    python3 setup.py install --cuda_ext --cpp_ext && \
 # install extentions
 #    cd ${ROOT}/lib/csrc/dcn_v2          && python3 setup.py build_ext --inplace && \
