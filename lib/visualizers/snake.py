@@ -29,7 +29,7 @@ class Visualizer:
         ex = ex.detach().cpu().numpy() * snake_config.down_ratio
 
         fig, ax = plt.subplots(1, figsize=(20, 10))
-        fig.imshow(inp)
+        ax.imshow(inp)
         ax.axis('off')
 
         # ax.imshow(inp)
@@ -55,41 +55,7 @@ class Visualizer:
             ax.plot(poly[:, 0], poly[:, 1], color=color)
 
         fig_save('1')
-
-    def visualize_summary(self, output, batch):
-        inp = img_utils.bgr_to_rgb(img_utils.unnormalize_img(batch['inp'][0], mean, std).permute(1, 2, 0))
-        box = output['detection'][:, :4].detach().cpu().numpy() * snake_config.down_ratio
-        plt.plot(inp)
-        fig_save('0')
-
-        ct_ind = np.unique(cp_ind)
-        score = score[ct_ind]
-        label = label[ct_ind]
-
-        colors = np.array([
-            [31, 119, 180],
-            [255, 127, 14],
-            [46, 160, 44],
-            [214, 40, 39],
-            [148, 103, 189],
-            [140, 86, 75],
-            [227, 119, 194],
-            [126, 126, 126],
-            [188, 189, 32],
-            [26, 190, 207]
-        ]) / 255.
-        np.random.shuffle(colors)
-        colors = cycle(colors)
-        for i in range(len(ex)):
-            color = next(colors).tolist()
-            poly = ex[i]
-            poly = np.append(poly, [poly[0]], axis=0)
-            ax.plot(poly[:, 0], poly[:, 1], color=color, linewidth=5)
-
-            x_min, y_min, x_max, y_max = box[i]
-            ax.plot([x_min, x_min, x_max, x_max, x_min], [y_min, y_max, y_max, y_min, y_min], color='w', linewidth=0.5)
-        fig_save(ct_ind)
-
+        
     def visualize_training_box(self, output, batch):
         inp = img_utils.bgr_to_rgb(img_utils.unnormalize_img(batch['inp'][0], mean, std).permute(1, 2, 0))
         box = output['detection'][:, :4].detach().cpu().numpy() * snake_config.down_ratio
@@ -99,7 +65,7 @@ class Visualizer:
         ex = ex.detach().cpu().numpy() * snake_config.down_ratio
 
         fig, ax = plt.subplots(1, figsize=(20, 10))
-        fig.tight_layout()
+        ax.imshow(inp)
         ax.axis('off')
 
         colors = np.array([
@@ -126,7 +92,7 @@ class Visualizer:
             ax.plot([x_min, x_min, x_max, x_max, x_min], [y_min, y_max, y_max, y_min, y_min], color='w', linewidth=0.5)
 
         #plt.show()
-        fig_save(3)
+        fig_save('2')
 
 
 
