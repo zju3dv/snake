@@ -6,6 +6,7 @@ import math
 from lib.utils import data_utils
 import torch.utils.data as data
 from pycocotools.coco import COCO
+from lib.config import cfg
 
 
 class Dataset(data.Dataset):
@@ -175,7 +176,7 @@ class Dataset(data.Dataset):
 
         # detection
         output_h, output_w = inp_out_hw[2:]
-        ct_hm = np.zeros([20, output_h, output_w], dtype=np.float32)
+        ct_hm = np.zeros([cfg.heads.ct_hm, output_h, output_w], dtype=np.float32)
         wh = []
         ct_cls = []
         ct_ind = []
