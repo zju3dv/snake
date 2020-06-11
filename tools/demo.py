@@ -11,6 +11,43 @@ import torch
 from lib.networks import make_network
 from lib.utils.net_utils import load_network
 from lib.visualizers import make_visualizer
+import numpy as np
+
+from lib.utils import img_utils, data_utils
+from lib.utils.snake import snake_config
+
+from lib.utils.snake import snake_config, snake_cityscapes_utils, snake_eval_utils, snake_poly_utils
+from external.cityscapesscripts.evaluation import evalInstanceLevelSemanticLabeling
+import pycocotools.mask as mask_util
+import pycocotools.coco as coco
+
+import json
+
+mean = snake_config.mean
+std = snake_config.std
+
+def id_to_ano(class_ids):
+    class_names = []
+    for i in range (len(class_ids)):
+        class_id = class_ids[i]
+        if class_id == 1:
+            class_name = 'pedestrian    '
+        elif class_id == 2:
+            class_name = 'cyclist       '
+        elif class_id == 3:
+            class_name = 'person-sitting'
+        elif class_id == 4:
+            class_name = 'car           '
+        elif class_id == 5:
+            class_name = 'van           '
+        elif class_id == 6:
+            class_name = 'tram          '
+        elif class_id == 7:
+            class_name = 'truck         '
+        else: #class_id == 8:
+            class_name = 'misc          '
+        class_names.append(class_name)
+    return class_names
 
 
 class Dataset(data.Dataset):
@@ -62,8 +99,68 @@ def demo():
 
     dataset = Dataset()
     visualizer = make_visualizer(cfg)
-    for batch in tqdm.tqdm(dataset):
-        batch['inp'] = torch.FloatTensor(batch['inp'])[None].cuda()
-        with torch.no_grad():
-            output = network(batch['inp'], batch)
-        visualizer.visualize(output, batch)
+
+    batch_index = 0
+    file_names = []
+    boxes = []
+    scores = []
+    polygons = []
+    labels = []
+    rles = []
+
+    # Create JSON result structure
+    result = {}
+    res = []
+    # Read elements from {lists of dicts}
+
+    with open("data_file.json", "w") as write_file:
+        for batch in tqdm.tqdm(dataset):
+            batch['inp'] = torch.FloatTensor(batch['inp'])[None].cuda()
+            with torch.no_grad():
+                output = network(batch['inp'], batch)
+            visualizer.visualize(output, batch)
+
+            file_names.append(dataset.imgs[batch_index])
+
+            print(batch_index)
+            inp = img_utils.bgr_to_rgb(img_utils.unnormalize_img(batch['inp'][0], mean, std).permute(1, 2, 0))
+            box = output['detection'][:, :4].detach().cpu().numpy() * snake_config.down_ratio
+            boxes.append(box)
+
+            detection = output['detection']
+            score = detection[:, 4].detach().cpu().numpy()
+            label = detection[:, 5].detach().cpu().numpy().astype(int)
+            py = output['py'][-1].detach().cpu().numpy() * snake_config.down_ratio
+
+            scores.append(score)
+            labels.append(id_to_ano(label))
+            polygons.append(py)
+
+            ori_h = inp.shape[0]
+            ori_w = inp.shape[1]
+            rle = snake_eval_utils.coco_poly_to_rle(py, ori_h, ori_w)
+            rles.append(rle)
+
+            result["Name"] = dataset.imgs[batch_index ]
+            result["Object"] = id_to_ano(label)
+            result["Score"] = score.tolist()
+            result["rle"] = rle
+
+            print("File name:", end=" ")
+            print(result["Name"], end=" ")
+
+            print("Object:", end=" ")
+            print(result["Object"], end=" ")
+
+            print("Score:", end=" ")
+            print(result["Score"])
+
+            print("rle:", end=" ")
+            print(result["rle"])
+
+            json.dump(result, write_file)
+            #res.append(result)
+
+            batch_index += 1
+    print('Stop')
+
