@@ -5,6 +5,7 @@ import numpy as np
 import torch
 from itertools import cycle
 import os
+import cv2
 
 mean = snake_config.mean
 std = snake_config.std
@@ -12,7 +13,7 @@ std = snake_config.std
 
 def fig_save(name='', fmt='png'):
     pwd = os.getcwd()
-    iPath = '/results/'
+    iPath = pwd + '/results/'
     if not os.path.exists(iPath):
         os.mkdir(iPath)
     os.chdir(iPath)
@@ -67,6 +68,10 @@ class Visualizer:
         fig, ax = plt.subplots(1, figsize=(20, 10))
         ax.imshow(inp)
         ax.axis('off')
+        img = inp.numpy() * 255
+        # cv2.imshow('inp', img)
+        cv2.imwrite("/home/cds-pc5/snake/img.png", img)
+        cv2.imshow('img', img)
 
         colors = np.array([
             [31, 119, 180],
@@ -91,12 +96,13 @@ class Visualizer:
             x_min, y_min, x_max, y_max = box[i]
             ax.plot([x_min, x_min, x_max, x_max, x_min], [y_min, y_max, y_max, y_min, y_min], color='w', linewidth=0.5)
 
-        #plt.show()
+        plt.show()
+        #cv2.imshow('plt', plt.numpy())
         fig_save('2')
 
 
 
     def visualize(self, output, batch):
-        self.visualize_ex(output, batch)
+        #self.visualize_ex(output, batch)
         self.visualize_training_box(output, batch)
-        self.visualize_summary(output, batch)
+        #self.visualize_summary(output, batch)

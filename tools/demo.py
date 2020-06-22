@@ -31,21 +31,21 @@ def id_to_ano(class_ids):
     for i in range (len(class_ids)):
         class_id = class_ids[i]
         if class_id == 1:
-            class_name = 'pedestrian    '
+            class_name = 'pedestrian'
         elif class_id == 2:
-            class_name = 'cyclist       '
+            class_name = 'cyclist'
         elif class_id == 3:
             class_name = 'person-sitting'
         elif class_id == 4:
-            class_name = 'car           '
+            class_name = 'car'
         elif class_id == 5:
-            class_name = 'van           '
+            class_name = 'van'
         elif class_id == 6:
-            class_name = 'tram          '
+            class_name = 'tram'
         elif class_id == 7:
-            class_name = 'truck         '
+            class_name = 'truck'
         else: #class_id == 8:
-            class_name = 'misc          '
+            class_name = 'misc'
         class_names.append(class_name)
     return class_names
 
