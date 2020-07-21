@@ -71,10 +71,10 @@ python setup.py build_ext --inplace
     ├── /path/to/kitti
     │   ├── testing
     │   │   ├── image_2
-    │   │   ├── instance_val.json
+    │   │   ├── instances_val.json
     │   ├── training
     │   │   ├── image_2
-    │   │   ├── instance_train.json
+    │   │   ├── instances_train.json
     ```
 4. Create a soft link:
     ```
