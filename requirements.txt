@@ -2,7 +2,7 @@ yacs==0.1.4
 numpy==1.16.4
 tqdm==4.28.1
 opencv-contrib-python==3.4.2.17
-opencv-python==3.4.2.17
+opencv-python==4.2.0.32
 imgaug==0.2.9
 pycocotools==2.0.0
 Pillow
