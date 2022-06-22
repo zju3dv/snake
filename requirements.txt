@@ -1,5 +1,5 @@
 yacs==0.1.4
-numpy==1.16.4
+numpy==1.22.0
 tqdm==4.28.1
 opencv-contrib-python==3.4.2.17
 opencv-python==3.4.2.17
