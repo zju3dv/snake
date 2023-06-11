@@ -18,7 +18,7 @@ Please see [INSTALL.md](INSTALL.md).
 
 ### Testing on Cityscapes
 
-1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/EixL7x9errtMjmdmP8GpD1ABd4ml95_Od-GYrm5vRUV9Fw?e=t5RlJW) and put it to `$ROOT/data/model/rcnn_snake/long_rcnn/197.pth`.
+1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/EnQgFOTnbBFJrtBngqdUJwsBzQ6D2ABQ0QZN8cQJPK5o3w?e=anYBe1) and put it to `$ROOT/data/model/rcnn_snake/long_rcnn/197.pth`.
 2. Test:
     ```
     # use coco evaluator
@@ -33,7 +33,7 @@ Please see [INSTALL.md](INSTALL.md).
 
 ### Testing on Kitti
 
-1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/EixL7x9errtMjmdmP8GpD1ABd4ml95_Od-GYrm5vRUV9Fw?e=t5RlJW) and put it to `$ROOT/data/model/snake/kins/149.pth`.
+1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/EnQgFOTnbBFJrtBngqdUJwsBzQ6D2ABQ0QZN8cQJPK5o3w?e=anYBe1) and put it to `$ROOT/data/model/snake/kins/149.pth`.
 2. Test:
     ```
     python run.py --type evaluate --cfg_file configs/kins_snake.yaml test.dataset KinsVal
@@ -45,7 +45,7 @@ Please see [INSTALL.md](INSTALL.md).
 
 ### Testing on Sbd
 
-1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/EixL7x9errtMjmdmP8GpD1ABd4ml95_Od-GYrm5vRUV9Fw?e=t5RlJW) and put it to `$ROOT/data/model/snake/sbd/149.pth`.
+1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/EnQgFOTnbBFJrtBngqdUJwsBzQ6D2ABQ0QZN8cQJPK5o3w?e=anYBe1) and put it to `$ROOT/data/model/snake/sbd/149.pth`.
 2. Test:
     ```
     python run.py --type evaluate --cfg_file configs/sbd_snake.yaml test.dataset SbdVal
@@ -59,7 +59,7 @@ Please see [INSTALL.md](INSTALL.md).
 
 ### Visualization on Cityscapes
 
-1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/EixL7x9errtMjmdmP8GpD1ABd4ml95_Od-GYrm5vRUV9Fw?e=t5RlJW) and put it to `$ROOT/data/model/rcnn_snake/long_rcnn/197.pth`.
+1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/EnQgFOTnbBFJrtBngqdUJwsBzQ6D2ABQ0QZN8cQJPK5o3w?e=anYBe1) and put it to `$ROOT/data/model/rcnn_snake/long_rcnn/197.pth`.
 2. Visualize:
     ```
     # Visualize Cityscapes test set
@@ -74,7 +74,7 @@ If setup correctly, the output will look like
 
 ### Visualization on Kitti
 
-1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/EixL7x9errtMjmdmP8GpD1ABd4ml95_Od-GYrm5vRUV9Fw?e=t5RlJW) and put it to `$ROOT/data/model/snake/kins/149.pth`.
+1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/EnQgFOTnbBFJrtBngqdUJwsBzQ6D2ABQ0QZN8cQJPK5o3w?e=anYBe1) and put it to `$ROOT/data/model/snake/kins/149.pth`.
 2. Visualize:
     ```
     python run.py --type visualize --cfg_file configs/kins_snake.yaml test.dataset KinsVal ct_score 0.3
@@ -82,7 +82,7 @@ If setup correctly, the output will look like
 
 ### Visualization on Sbd
 
-1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/EixL7x9errtMjmdmP8GpD1ABd4ml95_Od-GYrm5vRUV9Fw?e=t5RlJW) and put it to `$ROOT/data/model/snake/sbd/149.pth`.
+1. Download the pretrained model [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/EnQgFOTnbBFJrtBngqdUJwsBzQ6D2ABQ0QZN8cQJPK5o3w?e=anYBe1) and put it to `$ROOT/data/model/snake/sbd/149.pth`.
 2. Visualize:
     ```
     python run.py --type visualize --cfg_file configs/sbd_snake.yaml test.dataset SbdVal ct_score 0.3
