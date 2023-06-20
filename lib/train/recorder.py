@@ -37,8 +37,8 @@ class SmoothedValue(object):
 class Recorder(object):
     def __init__(self, cfg):
         log_dir = cfg.record_dir
-        if not cfg.resume:
-            os.system('rm -rf {}'.format(log_dir))
+        # if not cfg.resume:
+        #     os.system('rm -rf {}'.format(log_dir))
         self.writer = SummaryWriter(log_dir=log_dir)
 
         # scalars
