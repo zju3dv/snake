@@ -39,7 +39,7 @@ python setup.py build_ext --inplace
 #### Cityscapes
 
 1. Download the Cityscapes dataset (leftImg8bit\_trainvaltest.zip) from the official [website](https://www.cityscapes-dataset.com/downloads/).
-2. Download the processed annotation file [cityscapes_anno.tar.gz](https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/EnQgFOTnbBFJrtBngqdUJwsBzQ6D2ABQ0QZN8cQJPK5o3w?e=anYBe1).
+2. Download the processed annotation file [cityscapes_anno.tar.gz](https://drive.google.com/file/d/1hj1um8EE8SuJQhEWvmI-d8rkJe-AEVpi/view?usp=sharing).
 3. Organize the dataset as the following structure:
     ```
     ├── /path/to/cityscapes
@@ -85,7 +85,7 @@ python setup.py build_ext --inplace
 
 #### Sbd
 
-1. Download the Sbd dataset at [here](https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/EnQgFOTnbBFJrtBngqdUJwsBzQ6D2ABQ0QZN8cQJPK5o3w?e=anYBe1).
+1. Download the Sbd dataset at [here](https://drive.google.com/file/d/12EW4frUd9wL95gjUQek9U1_BRDrGsy2Y/view?usp=sharing).
 2. Create a soft link:
     ```
     ROOT=/path/to/snake
