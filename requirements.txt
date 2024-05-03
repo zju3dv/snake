@@ -1,6 +1,6 @@
 yacs==0.1.4
 numpy==1.16.4
-tqdm==4.28.1
+tqdm==4.66.3
 opencv-contrib-python==3.4.2.17
 opencv-python==3.4.2.17
 imgaug==0.2.9
